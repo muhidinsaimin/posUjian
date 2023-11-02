@@ -24,7 +24,7 @@
                         echo "<tr>";
                         echo "<td>$no</td>";
                         echo "<td>" . $r['nama'] . "</td>";
-                        echo "<td>Rp " . number_format($r['total'],0,',','.') . "</td>";
+                        echo "<td align='right'>" . number_format($r['total'],0,',','.') . "</td>";
                         echo '<td><a href="?m=penjualan&s=edit&id=' . $r['id'] . '" class="btn btn-sm btn-warning">Edit</a>&nbsp;
                         <a href="?m=penjualan&s=hapus&id=' . $r['id'] . '" onclick="return confirm(\'Anda Yakin?\')" class="btn btn-sm btn-danger">Hapus</a></td>';
                         echo "</tr>";

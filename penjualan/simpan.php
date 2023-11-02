@@ -1,11 +1,10 @@
 <?php
 if(isset($_POST['simpan'])) {
     include_once "koneksi.php";
-    $nama_penjualan = $_POST['nama_penjualan'];
-    $kapasitas    = $_POST['kapasitas'];
-    $terisi       = $_POST['terisi'];
+    $supplier_id = $_POST['supplier_id'];
+    $total       = $_POST['total'];
 
-    $sql = "INSERT INTO penjualan SET nama_penjualan='$nama_penjualan', kapasitas='$kapasitas', terisi='$terisi'";
+    $sql = "INSERT INTO penjualan SET supplier_id='$supplier_id', total='$total'";
     $query = mysqli_query($koneksi, $sql);
     if ($query) {
         // var_dump($sql);
