@@ -8,24 +8,29 @@
         </div>
         <?php
         include_once('koneksi.php');
-        $id    = $_GET['id'];
-        $sql   = "SELECT * FROM penjualan WHERE id='$id'";
-        $query = mysqli_query($koneksi, $sql);
-        $row   = mysqli_fetch_array($query);
-        ?>
+        $id     = $_GET['id'];
+        $sql    = "SELECT * FROM penjualan WHERE id='$id'";
+        $query  = mysqli_query($koneksi, $sql);
+        $row    = mysqli_fetch_array($query);
+        $sqls   = "SELECT * FROM supplier ORDER BY nama";
+        $querys = mysqli_query($koneksi, $sqls);
+        // $rows   = mysqli_fetch_array($querys);        ?>
         <div class="col">
             <form action="?m=penjualan&s=update" method="post">
                 <div class="mb-2">
-                    <label for="">Nama Penjualan</label>
-                    <input type="text" name="nama_penjualan" value="<?= $row['nama_penjualan'] ?>" class="form-control" autofocus>
+                    <label for="">Nama Supplier</label>
+                    <select name="supplier_id" class="form-control" required autofocus>
+                        <?php
+                        while($r=mysqli_fetch_array($querys)) {
+                        ?>
+                            <option value="<?=$r['id']?>" <?= $r['id']==$row['supplier_id']?'selected':'' ?>><?=$r['nama']?></option>
+                        <?php } ?>
+                        ?>
+                    </select>
                 </div>
                 <div class="mb-2">
-                    <label for="">Kapasitas</label>
-                    <input type="number" name="kapasitas" class="form-control" value="<?= $row['kapasitas'] ?>" >
-                </div>
-                <div class="mb-2">
-                    <label for="">Terisi</label>
-                    <input type="number" name="terisi" class="form-control" value="<?= $row['terisi'] ?>" >
+                    <label for="">Total Penjualan</label>
+                    <input type="number" name="total" value="<?= $row['total'] ?>" class="form-control">
                 </div>
                 <div class="mb-2">
                     <input type="hidden" name="id" value="<?= $row['id'] ?>">
